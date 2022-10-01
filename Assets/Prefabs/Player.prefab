@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be79f303c7c0ca246aef34c087fed111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
   jumpingPower: 9
   rb: {fileID: 3192268769057625719}
   groundCheck: {fileID: 3192268769204918852}
@@ -169,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isReal: 0
   CloneManagerScript: {fileID: 0}
+  CloneScript: {fileID: 0}
 --- !u!61 &3766738363350331559
 BoxCollider2D:
   m_ObjectHideFlags: 0

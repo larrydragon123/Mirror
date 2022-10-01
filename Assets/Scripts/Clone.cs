@@ -16,7 +16,7 @@ public class Clone : MonoBehaviour
 
     public Vector3 newPos;
     private bool inside = false;
-    private int numberOfClones = 0;
+    
 
     //When player enter, throw a text
     void OnTriggerEnter2D(Collider2D other)
@@ -42,14 +42,14 @@ public class Clone : MonoBehaviour
         Player = clones[0];
         newPos = new Vector3(this.transform.position.x - Player.transform.position.x + this.transform.position.x, Player.transform.position.y, Player.transform.position.z);
 
-        if(numberOfClones <1){
+        if(clones.Count <2){
             if(inside){
                 //clone the player
                 Debug.Log("Cloning");
                 newClone = Instantiate(clone, newPos, Player.transform.rotation);
                 
                 clones.Add(newClone);
-                numberOfClones++;
+                
             }
         }
         
