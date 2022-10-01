@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
+    Controller controller;
     private float horizontal;
     private float speed = 8f;
     [SerializeField] private float jumpingPower;
@@ -13,6 +14,9 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    void Start(){
+        controller = GetComponent<Controller>();
+    }
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -33,7 +37,11 @@ public class Player_Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        if(controller.isReal){
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        }else{
+            rb.velocity = new Vector2(-horizontal * speed, rb.velocity.y);
+        }
     }
 
     private bool IsGrounded()
