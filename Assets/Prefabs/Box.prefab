@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3454476210811102285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.0029796, y: 0, z: 0}
+  m_LocalScale: {x: 0.85858, y: 0.85858, z: 0.85858}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -147,8 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b3e69d00789784495b17d33f13ba35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RockPushedSFX: {fileID: 0}
-  RockLandedSFX: {fileID: 0}
 --- !u!60 &8430827675977339509
 PolygonCollider2D:
   m_ObjectHideFlags: 0
