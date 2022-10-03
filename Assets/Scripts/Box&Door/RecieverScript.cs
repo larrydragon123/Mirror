@@ -18,11 +18,6 @@ public class RecieverScript : MonoBehaviour
         searchForSignal();
     }
 
-    public virtual void Update()
-    {
-        
-    }
-
     public void searchForSignal()
     {
         Debug.Log("door signal: "+signal);
