@@ -19,10 +19,10 @@ public class GameManager : MonoBehaviour
         {
             Vector3 newPos =
                 new Vector3(mirrorPos.x -
-                    realPlayer.transform.position.x +
+                    clones[0].transform.position.x +
                     mirrorPos.x,
-                    realPlayer.transform.position.y,
-                    realPlayer.transform.position.z);
+                    clones[0].transform.position.y,
+                    clones[0].transform.position.z);
             //clone the player
             Debug.Log("Cloning");
             GameObject newClone =
@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
             clone.GetComponent<Controller>().isReal = true;
             
         }
-        realPlayer = clones[0];
         // CloneScript.clones[0].GetComponent<Controller>().isReal = true;
     }
 
