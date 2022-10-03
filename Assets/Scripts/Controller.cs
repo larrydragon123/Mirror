@@ -6,22 +6,23 @@ public class Controller : MonoBehaviour
 {
     public bool isReal = false;
 
-    public CloneManager CloneManagerScript;
-    public Clone CloneScript;
+    public GameManager GameManagerScript;
+    
     void Start()
     {
-        CloneManagerScript =
-            GameObject.Find("CloneController").GetComponent<CloneManager>();
+        //find GameManagerScript
+        GameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+        
     }
 
     public void Die()
     {
-        if (CloneManagerScript.CloneScript.clones.Count > 0)
+        if (GameManagerScript.clones.Count > 0)
         {
-            CloneManagerScript.passController();
+            GameManagerScript.passController();
             
             Destroy(this.gameObject);
-            CloneManagerScript.CloneScript.clones.Remove(this.gameObject);
+            GameManagerScript.clones.Remove(this.gameObject);
         }
     }
 

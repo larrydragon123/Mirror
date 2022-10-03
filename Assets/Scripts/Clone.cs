@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class Clone : MonoBehaviour
 {
-    public List<GameObject> clones = new List<GameObject>();
-    public GameObject clone;
-    public GameObject Player;
-    public GameObject interactText;
-    public Transform spawnPosition;
-    
-    public CloneManager CloneManagerScript;
+    public GameManager GameManagerScript;
 
-    public GameObject newClone;
+    public GameObject clone;
+
+    public GameObject interactText;
 
     public Vector3 newPos;
+
+    public GameObject Player;
+
     private bool inside = false;
-    
 
     //When player enter, throw a text
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
+            Player = other.gameObject;
             inside = true;
             interactText.SetActive(true);
         }
     }
+
     //when player leave, remove the text
     void OnTriggerExit2D(Collider2D other)
     {
@@ -37,39 +37,19 @@ public class Clone : MonoBehaviour
         }
     }
 
-    public void ClonePlayer(){
-        //get the distance between the player
-        Player = clones[0];
-        newPos = new Vector3(this.transform.position.x - Player.transform.position.x + this.transform.position.x, Player.transform.position.y, Player.transform.position.z);
-
-        if(clones.Count <2){
-            if(inside){
-                //clone the player
-                Debug.Log("Cloning");
-                newClone = Instantiate(clone, newPos, Player.transform.rotation);
-                
-                clones.Add(newClone);
-                
-            }
-        }
-        
-    }
     // Start is called before the first frame update
     void Start()
     {
-      Player = Instantiate(clone, spawnPosition.position, Quaternion.identity);
-      clones.Add(Player);
-      CloneManagerScript.passController();
-      
     }
 
     // Update is called once per frame
     void Update()
     {
         //press F to clone the player
-            if (Input.GetKeyDown(KeyCode.F)&&inside==true)
-            {
-                ClonePlayer();
-            }
+        if (Input.GetKeyDown(KeyCode.F) && inside == true)
+        {            
+            GameManagerScript.ClonePlayer(this.transform.position);
+            
+        }
     }
 }
