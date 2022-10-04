@@ -13,9 +13,9 @@ public class OpenKeyDoor : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("The key amount = " + KeyCounter.getKeyNum());
-            if (KeyCounter.getKeyNum() >= doorNum)
+            if (KeyCounter.getKeyNum() >= 1)
             {
-                
+                KeyCounter.removeKey();
                 Destroy(this.gameObject);
             }
         }

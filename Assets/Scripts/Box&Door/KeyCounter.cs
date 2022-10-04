@@ -14,6 +14,12 @@ public class KeyCounter : MonoBehaviour
         keyNum++;
     }
 
+    // remove key
+    public static void removeKey()
+    {
+        keyNum--;
+    }
+
     public static int getKeyNum()
     {
         
