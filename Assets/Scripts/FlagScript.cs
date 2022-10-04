@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FlagScript : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class FlagScript : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             //move to next scene
-            Application.LoadLevel(Application.loadedLevel + 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 

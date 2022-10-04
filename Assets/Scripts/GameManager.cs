@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,7 +38,6 @@ public class GameManager : MonoBehaviour
         foreach (GameObject clone in clones)
         {
             clone.GetComponent<Controller>().isReal = true;
-            
         }
         // CloneScript.clones[0].GetComponent<Controller>().isReal = true;
     }
@@ -56,5 +56,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // press R to load current scene
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        // press ESC to quit
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }

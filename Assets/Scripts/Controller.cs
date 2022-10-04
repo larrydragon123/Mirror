@@ -5,14 +5,14 @@ using UnityEngine;
 public class Controller : MonoBehaviour
 {
     public bool isReal = false;
+    public GameObject cursor;
 
     public GameManager GameManagerScript;
-    
+
     void Start()
     {
         //find GameManagerScript
         GameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
-        
     }
 
     public void Die()
@@ -20,7 +20,7 @@ public class Controller : MonoBehaviour
         if (GameManagerScript.clones.Count > 0)
         {
             GameManagerScript.passController();
-            
+
             Destroy(this.gameObject);
             GameManagerScript.clones.Remove(this.gameObject);
         }
@@ -36,6 +36,13 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-
+        if (isReal)
+        {   
+            cursor.SetActive(true);
+        }
+        else
+        {
+            cursor.SetActive(false);
+        }
     }
 }
