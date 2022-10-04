@@ -19,6 +19,11 @@ public class KeyCounter : MonoBehaviour
     {
         keyNum--;
     }
+    //clear all keys
+    public static void clearKeys()
+    {
+        keyNum = 0;
+    }
 
     public static int getKeyNum()
     {

@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //clear number of key
+            KeyCounter.clearKeys(); 
         }
         // press ESC to quit
         if (Input.GetKeyDown(KeyCode.Escape))
