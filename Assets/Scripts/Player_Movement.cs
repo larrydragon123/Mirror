@@ -15,25 +15,35 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private AudioSource jumpSoundEffect;
 
+    Animator playeranim;
+
     void Start()
     {
         controller = GetComponent<Controller>();
+        playeranim = GetComponent<Animator>();
+        StartCoroutine(respawnOver());
     }
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
-
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             jumpSoundEffect.Play();
             // rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
+            playeranim.SetBool("isJumping", true);
+            playeranim.SetBool("isGround", false);
         }
-
-        // if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
-        // {
-        //     rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        // }
+        else if (IsGrounded())
+        {
+            playeranim.SetBool("isJumping", false);
+            playeranim.SetBool("isGround", true);
+        }
+        else
+        {
+            playeranim.SetBool("isJumping", true);
+            playeranim.SetBool("isGround", false);
+        }
 
         Flip();
     }
@@ -47,6 +57,15 @@ public class Player_Movement : MonoBehaviour
         else
         {
             rb.velocity = new Vector2(-horizontal * speed, rb.velocity.y);
+        }
+
+        if (horizontal == 0)
+        {
+            playeranim.SetBool("isWalking", false);
+        }
+        else
+        {
+            playeranim.SetBool("isWalking", true);
         }
     }
 
@@ -77,5 +96,11 @@ public class Player_Movement : MonoBehaviour
                 transform.localScale = localScale;
             }
         }
+    }
+
+    IEnumerator respawnOver()
+    {
+        yield return new WaitForSeconds(1f);
+        playeranim.SetBool("RespawnEnd", true);
     }
 }

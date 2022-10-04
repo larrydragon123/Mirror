@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource deathSoundEffect;
     public void ClonePlayer(Vector3 mirrorPos)
     {
-        
         if (clones.Count < 2)
         {
             Vector3 newPos =
@@ -50,6 +49,7 @@ public class GameManager : MonoBehaviour
     {
         deathSoundEffect.Play();
     }
+    
     // Start is called before the first frame update
     void Start()
     {
