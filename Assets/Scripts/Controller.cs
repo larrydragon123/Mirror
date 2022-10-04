@@ -9,6 +9,7 @@ public class Controller : MonoBehaviour
 
     public GameManager GameManagerScript;
     Animator playeranim;
+    Player_Movement playerMovementScript;
 
 
     void Start()
@@ -16,6 +17,7 @@ public class Controller : MonoBehaviour
         //find GameManagerScript
         GameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
         playeranim = GetComponent<Animator>();
+        playerMovementScript = GetComponent<Player_Movement>();
     }
 
     public void Die()
@@ -35,6 +37,8 @@ public class Controller : MonoBehaviour
 
     IEnumerator DieAnim()
     {
+        playerMovementScript.speed = 0;
+        playerMovementScript.jumpingPower = 0;
         playeranim.SetBool("isDead", true);
         yield return new WaitForSeconds(1f);
         Destroy(this.gameObject);
