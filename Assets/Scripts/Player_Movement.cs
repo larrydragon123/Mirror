@@ -14,7 +14,8 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    void Start(){
+    void Start()
+    {
         controller = GetComponent<Controller>();
     }
     void Update()
@@ -37,9 +38,12 @@ public class Player_Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(controller.isReal){
+        if (controller.isReal)
+        {
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-        }else{
+        }
+        else
+        {
             rb.velocity = new Vector2(-horizontal * speed, rb.velocity.y);
         }
     }
@@ -51,12 +55,25 @@ public class Player_Movement : MonoBehaviour
 
     private void Flip()
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        if (controller.isReal)
         {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
+            if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+            {
+                isFacingRight = !isFacingRight;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
+            }
+        }
+        else
+        {
+            if (isFacingRight && horizontal > 0f || !isFacingRight && horizontal < 0f)
+            {
+                isFacingRight = !isFacingRight;
+                Vector3 localScale = transform.localScale;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
+            }
         }
     }
 }
