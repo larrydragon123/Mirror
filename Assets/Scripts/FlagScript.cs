@@ -13,6 +13,8 @@ public class FlagScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            collision.gameObject.GetComponent<Player_Movement>().speed = 0;
+            collision.gameObject.GetComponent<Player_Movement>().jumpingPower = 0;
             //move to next scene
             flagSoundEffect.Play();
             VictoryWait();
