@@ -8,11 +8,11 @@ public class GameManager : MonoBehaviour
     public List<GameObject> clones = new List<GameObject>();
 
     public Transform spawnPosition;
-
+    
     public GameObject realPlayer;
-
+    
     public GameObject clonePrefab;
-
+    [SerializeField] private AudioSource deathSoundEffect;
     public void ClonePlayer(Vector3 mirrorPos)
     {
         
@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
             GameObject newClone =
                 Instantiate(clonePrefab, newPos, Quaternion.identity);
             clones.Add (newClone);
+            
         }
     }
 
@@ -37,11 +38,18 @@ public class GameManager : MonoBehaviour
         // for each clone isreal true
         foreach (GameObject clone in clones)
         {
+            
             clone.GetComponent<Controller>().isReal = true;
         }
         // CloneScript.clones[0].GetComponent<Controller>().isReal = true;
-    }
 
+    }
+    
+
+    public void playDeathSound()
+    {
+        deathSoundEffect.Play();
+    }
     // Start is called before the first frame update
     void Start()
     {

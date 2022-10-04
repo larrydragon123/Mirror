@@ -8,6 +8,7 @@ public class Controller : MonoBehaviour
     public GameObject cursor;
 
     public GameManager GameManagerScript;
+    
 
     void Start()
     {
@@ -20,7 +21,7 @@ public class Controller : MonoBehaviour
         if (GameManagerScript.clones.Count > 0)
         {
             GameManagerScript.passController();
-
+            GameManagerScript.playDeathSound();
             Destroy(this.gameObject);
             GameManagerScript.clones.Remove(this.gameObject);
         }
@@ -30,6 +31,7 @@ public class Controller : MonoBehaviour
     {
         if (other.gameObject.tag == "Obstacle")
         {
+            
             Die();
         }
     }
@@ -39,10 +41,13 @@ public class Controller : MonoBehaviour
         if (isReal)
         {   
             cursor.SetActive(true);
+            
         }
         else
         {
+            
             cursor.SetActive(false);
+            
         }
     }
 }

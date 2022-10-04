@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48fae3f0024036e4f9f9e1b2fb62c5b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorSoundEffect: {fileID: 0}
   doorNum: 1
 --- !u!61 &2860082892829018199
 BoxCollider2D:

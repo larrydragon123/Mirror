@@ -114,3 +114,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ecb4b92059b7d47a27db7c69890b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keySoundEffect: {fileID: 0}

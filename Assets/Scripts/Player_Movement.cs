@@ -13,6 +13,7 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private AudioSource jumpSoundEffect;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class Player_Movement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
+            jumpSoundEffect.Play();
             // rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
             rb.AddForce(Vector2.up * jumpingPower, ForceMode2D.Impulse);
         }

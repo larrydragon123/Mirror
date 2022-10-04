@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class FlagScript : MonoBehaviour
 {
+    [SerializeField] private AudioSource flagSoundEffect;
     //if player reach the flag, move to next scene
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             //move to next scene
+            flagSoundEffect.Play();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

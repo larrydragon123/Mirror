@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class OpenKeyDoor : MonoBehaviour
 {
+    
     [SerializeField] private int doorNum;
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -13,6 +15,7 @@ public class OpenKeyDoor : MonoBehaviour
             Debug.Log("The key amount = " + KeyCounter.getKeyNum());
             if (KeyCounter.getKeyNum() >= doorNum)
             {
+                
                 Destroy(this.gameObject);
             }
         }
