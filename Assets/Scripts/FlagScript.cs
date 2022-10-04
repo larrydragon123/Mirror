@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class FlagScript : MonoBehaviour
 {
     [SerializeField] private AudioSource flagSoundEffect;
+    [SerializeField] private AudioSource victorySoundEffect;
+
     //if player reach the flag, move to next scene
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,20 +15,19 @@ public class FlagScript : MonoBehaviour
         {
             //move to next scene
             flagSoundEffect.Play();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            VictoryWait();
         }
     }
 
-    
-    // Start is called before the first frame update
-    void Start()
+    public void VictoryWait()
     {
-        
+        StartCoroutine(VictorySound());
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    IEnumerator VictorySound()
     {
-        
+        victorySoundEffect.Play();
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

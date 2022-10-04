@@ -8,11 +8,17 @@ public class GameManager : MonoBehaviour
     public List<GameObject> clones = new List<GameObject>();
 
     public Transform spawnPosition;
-    
+
     public GameObject realPlayer;
-    
+
     public GameObject clonePrefab;
     [SerializeField] private AudioSource deathSoundEffect;
+    [SerializeField] private AudioSource respawnSoundEffect;
+    [SerializeField] private AudioSource keySoundEffect;
+    [SerializeField] private AudioSource openKeyDoorSoundEffect;
+
+    private GameObject keyUI;
+
     public void ClonePlayer(Vector3 mirrorPos)
     {
         if (clones.Count < 2)
@@ -27,8 +33,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Cloning");
             GameObject newClone =
                 Instantiate(clonePrefab, newPos, Quaternion.identity);
-            clones.Add (newClone);
-            
+            clones.Add(newClone);
+            playRespawnSound();
         }
     }
 
@@ -37,19 +43,33 @@ public class GameManager : MonoBehaviour
         // for each clone isreal true
         foreach (GameObject clone in clones)
         {
-            
+
             clone.GetComponent<Controller>().isReal = true;
         }
         // CloneScript.clones[0].GetComponent<Controller>().isReal = true;
-
     }
-    
 
     public void playDeathSound()
     {
         deathSoundEffect.Play();
     }
-    
+
+    public void playKeySound()
+    {
+        keySoundEffect.Play();
+        keyUI.GetComponent<KeyUI>().playKeyAnim();
+    }
+
+    public void playRespawnSound()
+    {
+        respawnSoundEffect.Play();
+    }
+
+    public void playopenKeyDoorSound()
+    {
+        openKeyDoorSoundEffect.Play();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,8 +77,10 @@ public class GameManager : MonoBehaviour
             Instantiate(clonePrefab,
             spawnPosition.position,
             Quaternion.identity);
-        clones.Add (realPlayer);
+        clones.Add(realPlayer);
+        playRespawnSound();
         passController();
+        keyUI = GameObject.Find("KeyImage");
     }
 
     // Update is called once per frame
@@ -69,7 +91,7 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             //clear number of key
-            KeyCounter.clearKeys(); 
+            KeyCounter.clearKeys();
         }
         // press ESC to quit
         if (Input.GetKeyDown(KeyCode.Escape))

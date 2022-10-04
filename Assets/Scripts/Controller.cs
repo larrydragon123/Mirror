@@ -58,13 +58,10 @@ public class Controller : MonoBehaviour
         if (isReal)
         {
             cursor.SetActive(true);
-
         }
         else
         {
-
             cursor.SetActive(false);
-
         }
     }
 }
