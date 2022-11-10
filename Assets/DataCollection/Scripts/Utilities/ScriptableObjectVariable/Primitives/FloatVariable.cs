@@ -7,5 +7,8 @@ using UnityEngine;
     fileName = "New Float Variable")]
 public class FloatVariable : ScriptableObjectVariable<float>
 {
-    
+    public void IncrementByDeltaTime()
+    {
+        Value += Time.deltaTime;
+    }
 }

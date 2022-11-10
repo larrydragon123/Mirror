@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     
     // Data Collection Only:
     [SerializeField] private IntVariable _cloneCountVariable;
-    [SerializeField] private BoolVariable _levelCompletionVariable;
 
     public void ClonePlayer(Vector3 mirrorPos)
     {
@@ -88,10 +87,6 @@ public class GameManager : MonoBehaviour
         playRespawnSound();
         passController();
         keyUI = GameObject.Find("KeyImage");
-        
-        // Data Collection Only:
-        _levelCompletionVariable.Value = false;
-        _cloneCountVariable.Value = 0;
     }
 
     // Update is called once per frame
