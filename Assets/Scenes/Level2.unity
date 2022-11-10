@@ -5429,6 +5429,7 @@ MonoBehaviour:
   respawnSoundEffect: {fileID: 1007426062}
   keySoundEffect: {fileID: 2107582521}
   openKeyDoorSoundEffect: {fileID: 1488092005}
+  _cloneCountVariable: {fileID: 11400000, guid: 004ce61d2a0f543419945a9c4684d2d8, type: 2}
 --- !u!4 &1925674625
 Transform:
   m_ObjectHideFlags: 0

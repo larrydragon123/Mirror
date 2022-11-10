@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource openKeyDoorSoundEffect;
 
     private GameObject keyUI;
+    
+    // Data Collection Only:
+    [SerializeField] private IntVariable _cloneCountVariable;
 
     public void ClonePlayer(Vector3 mirrorPos)
     {
@@ -35,6 +38,9 @@ public class GameManager : MonoBehaviour
                 Instantiate(clonePrefab, newPos, Quaternion.identity);
             clones.Add(newClone);
             playRespawnSound();
+            
+            // Data Collection Only:
+            _cloneCountVariable.Value++;
         }
     }
 
@@ -81,6 +87,9 @@ public class GameManager : MonoBehaviour
         playRespawnSound();
         passController();
         keyUI = GameObject.Find("KeyImage");
+        
+        // Data Collection Only:
+        _cloneCountVariable.Value = 0;
     }
 
     // Update is called once per frame
