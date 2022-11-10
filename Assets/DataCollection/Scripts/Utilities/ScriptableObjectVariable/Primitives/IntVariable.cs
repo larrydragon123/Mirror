@@ -7,5 +7,8 @@ using UnityEngine;
     fileName = "New Int Variable")]
 public class IntVariable : ScriptableObjectVariable<int>
 {
-    
+    public void Increment()
+    {
+        Value++;
+    }
 }
