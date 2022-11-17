@@ -11,9 +11,10 @@ public class LogDataUpdater : MonoBehaviour
     /// </summary>
     private const string DataStorageURL =
         "https://brandonlymangamedev.com/mirror_research.php";
+
+    public int SubjectNumber = 0;
     
     [Header("Data To Store")]
-    [SerializeField] private IntVariable _subjectNumber;
     [SerializeField] private IntVariable _treatmentIndex;
     [SerializeField] private BoolVariable _completion;
     [SerializeField] private IntVariable _cloneCount;
@@ -45,7 +46,7 @@ public class LogDataUpdater : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("post_research", "true");
-        form.AddField("ID", _subjectNumber.Value);
+        form.AddField("ID", SubjectNumber);
         form.AddField("TREAT", _treatmentIndex.Value);
 
         int compInt = _completion.Value ? 1 : 0;

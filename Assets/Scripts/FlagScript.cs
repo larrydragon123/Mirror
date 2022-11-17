@@ -22,6 +22,11 @@ public class FlagScript : MonoBehaviour
         }
     }
 
+    public void LoadFinalScene()
+    {
+        SceneManager.LoadScene(8);
+    }
+
     public void VictoryWait()
     {
         StartCoroutine(VictorySound());

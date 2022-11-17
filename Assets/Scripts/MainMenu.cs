@@ -7,10 +7,9 @@ public class MainMenu : MonoBehaviour
 {
     public int nextLevelIndex;
     public IntVariable treatmentIndex;
-    public void PlayGame()
+
+    private void Start()
     {
-        //load the next scene
-        SceneManager.LoadScene(nextLevelIndex);
         if (nextLevelIndex == 1)
         {
             treatmentIndex.Value = 0;
@@ -19,6 +18,11 @@ public class MainMenu : MonoBehaviour
         {
             treatmentIndex.Value = 1;
         }
+    }
+    public void PlayGame()
+    {
+        //load the next scene
+        SceneManager.LoadScene(nextLevelIndex);
     }
 
     void Update() {

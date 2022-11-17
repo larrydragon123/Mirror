@@ -14,6 +14,10 @@ public class IntVariable : ScriptableObjectVariable<int>
 
     public void StoreStringAsInt(string stringToStore)
     {
-        Value = int.Parse(stringToStore);
+        Debug.Log("String to Store: " + stringToStore);
+        if (stringToStore != "")
+        {
+            Value = int.Parse(stringToStore);
+        }
     }
 }

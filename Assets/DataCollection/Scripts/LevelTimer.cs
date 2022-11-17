@@ -8,6 +8,7 @@ public class LevelTimer : MonoBehaviour
     #region MonoBehaviour Methods
     private void Start()
     {
+        Time.timeScale = 0.0f;
         _levelTimerVariable.Value = 0.0f;
         _timerRunning = true;
     }

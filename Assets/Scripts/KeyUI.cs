@@ -33,8 +33,11 @@ public class KeyUI : MonoBehaviour
     
     IEnumerator keyUIAnim()
     {
-        keyAnim.SetBool("getKey",true);
-        yield return new WaitForSeconds(1f);
-        keyAnim.SetBool("getKey",false);
+        if (keyAnim != null)
+        {
+            keyAnim.SetBool("getKey", true);
+            yield return new WaitForSeconds(1f);
+            keyAnim.SetBool("getKey", false);
+        }
     }
 }

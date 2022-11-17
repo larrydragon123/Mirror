@@ -89,10 +89,15 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SpawnRealPlayer();
+    }
+
+    void SpawnRealPlayer()
+    {
         realPlayer =
             Instantiate(clonePrefab,
-            spawnPosition.position,
-            Quaternion.identity);
+                spawnPosition.position,
+                Quaternion.identity);
         clones.Add(realPlayer);
         playRespawnSound();
         passController();
@@ -113,6 +118,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
+        }
+
+        if (clones.Count == 0)
+        {
+            SpawnRealPlayer();
         }
     }
 }
