@@ -23,6 +23,7 @@ public class Player_Movement : MonoBehaviour
         playeranim = GetComponent<Animator>();
         StartCoroutine(respawnOver());
     }
+
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -44,7 +45,6 @@ public class Player_Movement : MonoBehaviour
             playeranim.SetBool("isJumping", true);
             playeranim.SetBool("isGround", false);
         }
-
         Flip();
     }
 
