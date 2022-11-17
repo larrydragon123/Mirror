@@ -11,4 +11,9 @@ public class IntVariable : ScriptableObjectVariable<int>
     {
         Value++;
     }
+
+    public void StoreStringAsInt(string stringToStore)
+    {
+        Value = int.Parse(stringToStore);
+    }
 }

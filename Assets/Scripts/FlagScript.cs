@@ -7,6 +7,7 @@ public class FlagScript : MonoBehaviour
 {
     [SerializeField] private AudioSource flagSoundEffect;
     [SerializeField] private AudioSource victorySoundEffect;
+    [SerializeField] private int _transitionToSceneIndex;
 
     //if player reach the flag, move to next scene
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,6 +31,6 @@ public class FlagScript : MonoBehaviour
     {
         victorySoundEffect.Play();
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(_transitionToSceneIndex);
     }
 }

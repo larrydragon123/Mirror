@@ -49,7 +49,10 @@ public class Clone : MonoBehaviour
         //press F to clone the player
         if (Input.GetKeyDown(KeyCode.F) && inside == true)
         {
-            GameManagerScript.ClonePlayer(this.transform.position);
+            if (this != null)
+            {
+                GameManagerScript.ClonePlayer(this.transform.position);
+            }
         }
     }
 }

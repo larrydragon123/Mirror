@@ -5,10 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public int nextLevelIndex;
+    public IntVariable treatmentIndex;
     public void PlayGame()
     {
         //load the next scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(nextLevelIndex);
+        if (nextLevelIndex == 1)
+        {
+            treatmentIndex.Value = 0;
+        }
+        else
+        {
+            treatmentIndex.Value = 1;
+        }
     }
 
     void Update() {
